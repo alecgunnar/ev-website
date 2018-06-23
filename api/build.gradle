@@ -41,7 +41,6 @@ repositories {
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('com.fasterxml.jackson.module:jackson-module-kotlin')
 	compile('org.flywaydb:flyway-core')
@@ -49,5 +48,4 @@ dependencies {
 	compile("org.jetbrains.kotlin:kotlin-reflect")
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('org.springframework.security:spring-security-test')
 }
