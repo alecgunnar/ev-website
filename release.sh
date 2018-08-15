@@ -7,6 +7,8 @@ pushd api
 popd
 
 pushd ui
+npm run test:unit
+npm run test:e2e
 npm run build
 popd
 
