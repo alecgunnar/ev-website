@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class CreateTopicController(
-        var createTopicService: CreateTopicService
+        val createTopicService: CreateTopicService
 ) {
     @PostMapping("/topics")
     fun createTopic(
