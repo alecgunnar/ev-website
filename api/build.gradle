@@ -3,13 +3,20 @@ buildscript {
 		kotlinVersion = '1.2.41'
 		springBootVersion = '2.0.3.RELEASE'
 	}
+
 	repositories {
 		mavenCentral()
+
+		maven {
+			url("http://dl.bintray.com/vermeulen-mp/gradle-plugins")
+		}
 	}
+
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
 		classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+		classpath("com.wiredforcode:gradle-spawn-plugin:0.8.0")
 	}
 }
 
@@ -18,6 +25,7 @@ apply plugin: 'kotlin-spring'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.wiredforcode.spawn'
 
 group = 'com.whatsupev'
 version = 'RELEASE'
@@ -51,4 +59,14 @@ dependencies {
 	compile('com.h2database:h2')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+task startApi(type: SpawnProcessTask, dependsOn: 'assemble') {
+	command "java -jar ${projectDir}/build/libs/WhatsUpEV-RELEASE.jar -Dserver.port=8080"
+	ready 'Tomcat started on port(s): 8080'
+	pidLockFileName '.api.pid.lock'
+}
+
+task stopApi(type: KillProcessTask) {
+	pidLockFileName '.api.pid.lock'
 }

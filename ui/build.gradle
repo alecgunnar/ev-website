@@ -1,0 +1,28 @@
+buildscript {
+	repositories {
+    maven {
+			url("http://dl.bintray.com/vermeulen-mp/gradle-plugins")
+		}
+	}
+
+  dependencies {
+    classpath("com.wiredforcode:gradle-spawn-plugin:0.8.0")
+  }
+}
+
+apply plugin: 'com.wiredforcode.spawn'
+
+task startUi(type: SpawnProcessTask) {
+	command "npm --prefix ${projectDir} run serve -- --port 8081"
+	ready 'App running at'
+  pidLockFileName '.ui.pid.lock'
+}
+
+task stopUi(type: KillProcessTask) {
+  pidLockFileName '.ui.pid.lock'
+}
+
+task install(type: Exec) {
+  executable 'npm'
+  args 'install'
+}

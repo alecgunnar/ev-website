@@ -1,0 +1,9 @@
+task startApp {
+  dependsOn ':api:startApi'
+  dependsOn ':ui:startUi'
+}
+
+task stopApp {
+  dependsOn ':api:stopApi'
+  dependsOn ':ui:stopUi'
+}
