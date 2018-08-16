@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+./gradlew :api:stopApi &> /dev/null
+./gradlew :ui:stopUi &> /dev/null
+
 set -e
 
 ./gradlew startApp
