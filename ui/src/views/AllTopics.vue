@@ -1,8 +1,8 @@
 <template>
   <div>
-    <router-link :to="{ name: 'createTopic' }" data-qa="create-topic-link">Create Topic</router-link>
-    <ol data-qa="topics-list">
-      <li v-for="topic in topics" :key="topic.id" data-qa="topic-row">{{ topic.title }}</li>
+    <p><router-link :to="{ name: 'createTopic' }" data-qa="create-topic-link">Create Topic</router-link></p>
+    <ol data-qa="topics-list" class="topicsList">
+      <li v-for="topic in topics" :key="topic.id" data-qa="topic-row" class="topicsList__topic">{{ topic.title }}</li>
     </ol>
   </div>
 </template>
@@ -25,6 +25,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.topicsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
+.topicsList__topic {
+  background-color: #FAFAFA;
+  margin: 0 0 20px 0;
+  padding: 10px;
+}
 </style>

@@ -1,8 +1,15 @@
 <template>
-  <form data-qa="create-topic-form" @submit.prevent="createTopic">
-    <input data-qa="topic-title-input" v-model="topicTitle" />
-    <button data-qa="create-topic-button">Submit</button>
-  </form>
+  <div>
+    <form data-qa="create-topic-form" @submit.prevent="createTopic" class="form">
+      <div class="form__inputRow">
+        <label for="topic-title">Topic Title</label>
+        <input data-qa="topic-title-input" id="topic-title" v-model="topicTitle" />
+      </div>
+      <div class="form__buttonRow">
+        <button data-qa="create-topic-button">Submit</button>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -29,6 +36,25 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.form {
 
+}
+
+.form__inputRow {
+  margin: 0 0 20px;
+
+  label {
+    display: block;
+    margin: 0 0 5px;
+  }
+
+  input {
+    padding: 5px;
+  }
+}
+
+.form__buttonRow {
+
+}
 </style>
