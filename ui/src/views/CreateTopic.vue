@@ -26,10 +26,11 @@ export default {
     createTopic () {
       axios.post(process.env.VUE_APP_BACKEND_URL + 'topics', {
         title: this.topicTitle
-      }).then(() => {
-        this.$router.push({
-          name: 'allTopics'
-        })
+      }).then(this.directUserToAllTopics)
+    },
+    directUserToAllTopics () {
+      this.$router.push({
+        name: 'allTopics'
       })
     }
   }
