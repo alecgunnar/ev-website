@@ -2,3 +2,4 @@
 .deploy_properties.sh
 .api.pid.lock
 .ui.pid.lock
+build/
